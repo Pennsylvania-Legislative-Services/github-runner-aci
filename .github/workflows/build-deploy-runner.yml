@@ -14,11 +14,10 @@ on:
 env:
   IMAGE_NAME: runner
   IMAGE_TAG: ${{ github.run_number }}
-  RESOURCE_GROUP: ${{ secrets.ACI_RESOURCE_GROUP }}
-  LOCATION: ${{ secrets.ACI_REGION }}
-  RUNNER_REPOSITORY_URL: "https://github.com/Pennsylvania-Legislative-Services/github-runner-aci"
+  RUNNER_REPOSITORY_URL: https://github.com/Pennsylvania-Legislative-Services/github-runner-aci
+  RESOURCE_GROUP: PLS-General
+  LOCATION: eastus
   
-
 jobs:
   build:
     runs-on: ubuntu-latest
