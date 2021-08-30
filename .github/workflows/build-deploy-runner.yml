@@ -14,7 +14,6 @@ on:
 env:
   IMAGE_NAME: runner
   IMAGE_TAG: ${{ github.run_number }}
-  RUNNER_REPOSITORY_URL: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
   RESOURCE_GROUP: ${{ secrets.ACI_RESOURCE_GROUP }}
   LOCATION: ${{ secrets.ACI_REGION }}
   
@@ -52,7 +51,7 @@ jobs:
           cpu: 2
           dns-name-label: ${{ secrets.ACI_DNS_ROOT }}${{ github.run_number }}
           # List of environment variables for the container. Space-seperated in "key=value" format
-          environment-variables: RUNNER_REPOSITORY_URL=${{ env.RUNNER_REPOSITORY_URL }}
+          environment-variables: RUNNER_REPOSITORY_URL=${{ env.GITHUB_SERVER_URL + "/" + env.GITHUB_REPOSITORY }}
           image: ${{ SECRETS.ACR_SERVER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           # Name of the Container Group Instance
           name: actions-runner
