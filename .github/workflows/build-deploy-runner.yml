@@ -49,6 +49,7 @@ jobs:
           resource-group: ${{ env.RESOURCE_GROUP }}
           location: ${{ env.LOCATION }}
           cpu: 2
+          restart-policy: 'OnFailure'
           dns-name-label: ${{ secrets.ACI_DNS_ROOT }}${{ github.run_number }}
           # List of environment variables for the container. Space-seperated in "key=value" format
           environment-variables: RUNNER_REPOSITORY_URL=${{ env.RUNNER_REPOSITORY_URL }}
