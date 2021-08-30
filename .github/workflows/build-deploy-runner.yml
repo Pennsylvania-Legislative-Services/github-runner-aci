@@ -16,6 +16,7 @@ env:
   IMAGE_TAG: ${{ github.run_number }}
   RESOURCE_GROUP: ${{ secrets.ACI_RESOURCE_GROUP }}
   LOCATION: ${{ secrets.ACI_REGION }}
+  RUNNER_REPOSITORY_URL: "https://github.com/Pennsylvania-Legislative-Services/github-runner-aci"
   
 
 jobs:
@@ -44,8 +45,6 @@ jobs:
       # Deploy an Azure Container Instance
       - name: Deploy to Azure Container Instances
         uses: Azure/aci-deploy@v1
-        env:
-          RUNNER_REPOSITORY_URL: "${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}"
         with:
           # Name of the Resource Group in which the Container Instance will be created
           resource-group: ${{ env.RESOURCE_GROUP }}
